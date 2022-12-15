@@ -1,12 +1,12 @@
-import { styled } from "../styles"
+import { styled } from "../styles";
 
 const Button = styled("button", {
-  backgroundColor: "$purple",
+  backgroundColor: "$green300",
   borderRadius: 4,
   border: 0,
   padding: "4px 8px",
   cursor: "pointer",
-})
+});
 
 export default function Home() {
   return (
@@ -14,5 +14,5 @@ export default function Home() {
       <h1>Home</h1>
       <Button>Click me</Button>
     </>
-  )
+  );
 }
