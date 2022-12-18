@@ -38,14 +38,29 @@ export const Product = styled("div", {
         opacity: 0,
         transition: "all 0.2s ease-in-out",
 
-        strong: {
-            fontSize: "$lg",
-            color: "$gray100",
+        div: {
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.5rem",
+
+            strong: {
+                fontSize: "$lg",
+                color: "$gray100",
+            },
+            span: {
+                fontSize: "$lg",
+                fontWeight: "bold",
+                color: "$green300",
+            }
         },
-        span: {
-            fontSize: "$xl",
-            fontWeight: "bold",
-            color: "$green300",
+
+        button: {
+            padding: "0.5rem",
+            backgroundColor: "$green300",
+            cursor: "pointer",
+            border: 0,
+            borderRadius: 8,
+            color: "$white",
         }
     },
 

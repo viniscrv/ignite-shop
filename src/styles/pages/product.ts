@@ -37,7 +37,8 @@ export const ProductDatails = styled("div", {
         marginTop: "1rem",
         display: "block",
         fontSize: "$2xl",
-        color: "$green300"
+        color: "$green300",
+        fontWeight: "bold",
     },
     p: {
         marginTop: "2.5rem",
