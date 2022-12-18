@@ -11,6 +11,12 @@ export const CartContainer = styled("div", {
     right: 0,
 });
 
+export const Overlay = styled(Dialog.Overlay, {
+    backgroundColor: "rgba(0,0,0,0.4)",
+    position: "fixed",
+    inset: 0,
+});
+
 export const CloseButton = styled(Dialog.Close, {
     backgroundColor: "transparent",
     position: "absolute",
@@ -39,6 +45,9 @@ export const ItemsList = styled("div", {
             height: "93px",
             background: "linear-gradient(180deg, #1ea483 0%, #7465d4 100%)",
             borderRadius: 8,
+            img : {
+                objectFit: "cover",
+            }
         },
         div: {
             display: "flex",

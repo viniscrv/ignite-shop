@@ -1,10 +1,21 @@
 import * as Dialog from '@radix-ui/react-dialog';
+import Image from 'next/image';
 import { X } from 'phosphor-react';
-import { CartContainer, CloseButton, Content, ItemsList, PurshaseInfo } from '../styles/cart';
+import { useContext } from 'react';
+import { CartContext } from '../contexts/CartContext';
+import { CartContainer, CloseButton, Content, ItemsList, Overlay, PurshaseInfo } from '../styles/cart';
 
 export function Cart() {
+
+    const { cartProducts, removeProductAtCart } = useContext(CartContext);
+
+    function handleDeleteProduct(id: string) {
+        removeProductAtCart(id);
+    }
+
     return (
         <Dialog.Portal>
+            <Overlay/>
             <CartContainer>
                 <Content>
                     <CloseButton >
@@ -12,20 +23,26 @@ export function Cart() {
                     </CloseButton>
                     <ItemsList>
                         <Dialog.Title>Sacola de compras</Dialog.Title>
-                        <div>
-                            <div className='image-box'></div>
-                            <div>
-                                <p>Camiseta Beyond the Limits</p>
-                                <span>R$ 79,90</span>
-                                <button>Remover</button>
-                            </div>
-                        </div>
+                        {cartProducts.map((product) => {
+                            return (
+                                <div key={product.id}>
+                                    <div className='image-box'>
+                                        <Image src={product.imageUrl} alt="" width={100} height={100}/> 
+                                    </div>
+                                    <div>
+                                        <p>{product.name}</p>
+                                        <span>{product.price}</span>
+                                        <button onClick={() => handleDeleteProduct(product.id)}>Remover</button>
+                                    </div>
+                                </div>
+                            )
+                        })}
                     </ItemsList>
 
                     <PurshaseInfo>
                         <div className='quantity'>
                             <p>Quantidade</p>
-                            <p>3 itens</p>
+                            <p>{cartProducts.length} itens</p>
                         </div>
                         <div className='price'>
                             <p>Valor total</p>
