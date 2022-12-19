@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useState } from "react";
 
 interface CartContextType {
-    totalQuantity: number;
+    totalItems: number;
     cartProducts: productInCart[];
     addProductAtCart: (product: productInCart) => void;
     removeProductAtCart: (id: string) => void;
@@ -12,6 +12,8 @@ interface productInCart {
     imageUrl: string;
     name: string;
     price: string;
+    priceId: string;
+    priceCents: number;
 }
 
 interface CartProviderProps {
@@ -22,19 +24,21 @@ export const CartContext = createContext({} as CartContextType);
 
 export function CartProvider({children}: CartProviderProps) {
 
-    const [totalQuantity, setTotalQuantity] = useState(0);
     const [cartProducts, setCartProducts] = useState<productInCart[]>([]);
 
+    const totalItems = cartProducts.length;
+
     function addProductAtCart(product: productInCart) {
-        setTotalQuantity((state) => state + 1);
-        setCartProducts((state) => [...state, product]);
+        let index = cartProducts.findIndex(productInCart => productInCart.id == product.id);
+
+        if (index < 0) {
+            setCartProducts((state) => [...state, product]);
+            console.log(cartProducts)
+        }
     }
 
     function removeProductAtCart(id: string) {
         const CartWithoutRemovedProduct = cartProducts.filter((product) => product.id !== id);
-
-        setTotalQuantity((state) => state - 1);
-
         setCartProducts(CartWithoutRemovedProduct);
     }
 
@@ -43,7 +47,7 @@ export function CartProvider({children}: CartProviderProps) {
             addProductAtCart,
             removeProductAtCart,
             cartProducts,
-            totalQuantity,
+            totalItems,
             }}>
             {children}
         </CartContext.Provider>

@@ -24,10 +24,6 @@ export const Header = styled("header", {
         cursor: "pointer",
         border: 0,
         borderRadius: 8,
+        postion: "relative",
     },
-
-    ".badge": {
-        padding: ".2rem",
-        backgorundColor: "$green300",
-    }
 });

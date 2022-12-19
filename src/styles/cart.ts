@@ -105,8 +105,12 @@ export const PurshaseInfo = styled("div", {
         fontSize: "$md",
         padding: "1.4rem",
         cursor: "pointer",
-        "&:hover": {
+        "&:disabled": {
+            opacity: 0.7,
+            cursor: "not-allowed",
+        },
+        "&:not(:disabled):hover": {
             backgroundColor: "$green300",
-        }
+        },
     }
 });
