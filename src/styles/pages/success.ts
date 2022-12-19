@@ -4,8 +4,7 @@ export const SuccessContainter = styled("main", {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center",
-    margin: "0 auto",
+    margin: "2rem auto",
     height: 656,
 
     h1: {
@@ -34,19 +33,26 @@ export const SuccessContainter = styled("main", {
     }
 });
 
+export const ImagesProducts = styled("div", {
+    display: "flex",
+    flexWrap: "wrap",
+    alignItems: "center",
+    justifyContent: "center",
+    margin: "2rem auto 0",
+    maxWidth: 600,
+})
+
 export const ImageContainer = styled("div", {
-    width: "100%",
-    maxWidth: 130,
-    height: 145,
     background: "linear-gradient(180deg, #1ea483 0%, #7465d4 100%)",
     borderRadius: 8,
-    padding: "0.25rem",
+    padding: "1rem",
     marginTop: "4rem",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    margin: 10,
 
     img: {
-        objectFit: "cover"
+        objectFit: "contain"
     }
 });
